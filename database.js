@@ -8,14 +8,24 @@ const books = [
       authors: [1, 2],
       category: ["Tech", "Programmming", "Science"],
       publications: 1
-    }
+    },
+    {
+        ISBN: "123Book",
+        title: "Getting Started With JAVA",
+        pub_date: "2021-07-07",
+        langauge: "en",
+        no_of_pages: 300,
+        authors: [1, 2,3],
+        category: ["Technology", "Science"],
+        publications: 2
+      }
   ];
   
   const authors = [
     {
       id: 1,
       name: "Divisht K",
-      books: ["12345Book"]
+      books: ["12345Book","NewBook"]
     },
     {
       id: 2,

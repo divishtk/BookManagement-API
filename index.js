@@ -64,6 +64,26 @@ app.get("/is/:ISBN",(request,response)=>{
 
 
 
+            //to get the list of books based on category
+
+            app.get("/c/:cat",(req, res)=>{
+
+
+                const getcat=req.params.cat;
+    
+                const filtercat=database.books.filter((c)=>(c.category.includes(getcat)))
+    
+                    if(filtercat.length==0){
+    
+                        return res.json({error:`No book Found Based on category ${getcat}`});
+                    }
+    
+                return res.json({cat:filtercat});
+    
+    
+    
+                })
+
 
 
 
@@ -127,6 +147,25 @@ app.get("/authors/authors",(request,response)=>{
                 })
 
 
+
+
+                                //to get all authors  based on books
+                                app.get("/auth/book/:book",(request,response)=>{
+
+
+                                    const authors =request.params.book;
+
+                                    const getAuth=database.authors.filter((a)=>a.books.includes(authors));
+
+                                    if(getAuth.length==0){
+                
+                                        return response.json({error:`No Author Found Regarding Book ${authors}`})
+                                    }
+
+                                    return response.json({authorname:getAuth})
+
+
+                                })
 
             
 
