@@ -5,23 +5,23 @@ const books = [
       pub_date: "2021-07-07",
       langauge: "en",
       no_of_pages: 300,
-      author: [1, 2],
+      authors: [1, 2],
       category: ["Tech", "Programmming", "Science"],
-      publications: [1],
-    },
+      publications: 1
+    }
   ];
   
   const authors = [
     {
       id: 1,
       name: "Divisht K",
-      books: ["12345Book"],
+      books: ["12345Book"]
     },
     {
       id: 2,
       name: "Elon Mask",
-      books: ["12345Book"],
-    },
+      books: ["12345Book"]
+    }
   ];
   
   const publications = [
@@ -29,5 +29,7 @@ const books = [
       id: 1,
       name: "WriteX",
       books: ["12345Book"],
-    },
+    }
   ];
+
+  module.exports ={books,authors,publications}
