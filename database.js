@@ -39,6 +39,16 @@ const books = [
       id: 1,
       name: "WriteX",
       books: ["12345Book"],
+    },
+    {
+      id: 2,
+      name: "TechMax",
+      books: ["12345Book"],
+    },
+    {
+      id: 32,
+      name: "LOLA",
+      books: ["123book"],
     }
   ];
 

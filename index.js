@@ -170,6 +170,62 @@ app.get("/authors/authors",(request,response)=>{
             
 
 
+                                    //Publications
+                                    //to get all publications
+
+
+
+
+                                    app.get("/publications",(request,response)=>{
+
+
+                                        return response.json({publication:database.publications})
+                                    
+                                    })
+
+
+
+                             //to get specific publications
+
+
+
+                             app.get("/publications/:pubid",(request,response)=>{
+
+
+                                const getPublications=database.publications.filter((publication)=>(publication.id==request.params.pubid))
+
+
+                                    if(getPublications.length==0){
+                                        return response.json({error:"No Specific Publication Found"})
+                                    }
+
+                                return response.json({publicationsId:getPublications})
+                            
+                            })
+
+
+                                    
+                                    
+                             //to get list of specific publications based on books ISBN
+                             app.get("/publication/:isbn", (req, res) => {
+                              const getSpecificPublications = database.publications.filter((publication) =>
+                                  publication.books.includes(req.params.isbn)
+                                ); 
+                              
+                        
+                              
+                                if (getSpecificPublications.length==0) {
+                                  return res.json({
+                                    error: `No Publication found for the book ${req.params.isbn}`,
+                                  });
+                                }
+                              
+                                return res.json({ publicationss: getSpecificPublications });
+                              });
+                              
+
+
+
 
 
 app.listen(3000)
