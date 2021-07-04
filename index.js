@@ -1,7 +1,10 @@
 const express=require('express');
 
 const app = express();
-
+app.use(express.json())
+//instead of exp.hson we can use body parser
+/*const bodyparsress = require('body-parser');
+app.use(bodyparsress.json());*/
 
 
 //database
@@ -225,6 +228,136 @@ app.get("/authors/authors",(request,response)=>{
                               
 
 
+
+
+
+
+
+
+
+                              //Postman Testing 
+
+                              app.post("/test/data",(request,response)=>{
+
+
+                                response.send("Hello PostMan Haha");
+                                console.log(request.body);
+
+
+                              });
+
+                            
+
+
+
+
+
+                              //Route-->   /book/add/
+                              //Desc -->add new book 
+                              //methods-->Post (To add data)
+
+                                app.post("/book/add",(request,response)=>{
+                                    console.log(request.body);
+                                    const {newBook} =request.body;
+                                    database.books.push(newBook);
+                                    return response.json({books:database.books});
+
+                                        /*
+                                          /*"ISBN": "12345Book",
+        "title": "Getting Started With JS",
+        "pub_date": "2021-07-07",
+        "langauge": "en",
+        "no_of_pages": 300,
+        "authors": [
+            1
+        ],
+        "category": [
+            "Tech",
+            "Programmming",
+            "Science"
+        ],
+        "publications": 1*/
+                                        
+                                });
+
+
+                                
+                              //Route-->   /author/add/
+                              //Desc -->add new author 
+                              //methods-->Post (To add data)
+
+                              app.post("/author/add",(request,response)=>{
+                                console.log(request.body);
+                                const {newAuthor} =request.body;
+                                database.authors.push(newAuthor);
+                                return response.json({author:database.authors});
+
+
+                                    /*
+                                    
+                                    {
+    "newAuthor": {
+        "id": 9,
+        "name": "Takshashila K",
+        "books": []
+    }
+}
+
+
+                                    */
+
+                              })
+
+
+                                            
+                              //Route-->   /publication/add/
+                              //Desc -->add new pubication 
+                              //methods-->Post (To add data)
+
+
+                              app.post("/publications/add",(req, res)=>{
+
+                                const {newPub}=req.body;
+
+                                database.publications.push(newPub);
+
+                                return res.json({newpub:database.publications})
+
+
+
+
+                              })
+
+
+
+                                   //Route-->   /book/update/title
+                              //Desc -->update book title
+                              //methods-->Put (To add data)
+
+
+                              app.put("/book/update/title/:isbn",(request,response)=>{
+
+
+                                    database.books.forEach((book)=>{
+
+                                        const isbn = request.params.isbn;
+                                        if(isbn===book.ISBN){
+                                         book.title = request.body.newBooktitle;
+
+                                            return ;
+    
+                                        }
+    
+
+
+                                    })
+                                   
+                                    return response.json({title:database.books})
+
+
+
+
+                              })
 
 
 
